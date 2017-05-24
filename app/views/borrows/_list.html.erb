@@ -1,0 +1,26 @@
+<% if @book.borrows.size > 0 %>
+  <h2>Book Appointment Details</h2>
+  <% @book.borrows.each do |bo| %>
+    <ul class="list-group mb-3">
+      <li class="list-group-item">
+        <strong class="mr-1">Resident:</strong>
+        <%= bo.resident %>
+      </li>
+     
+      <li class="list-group-item">
+        <strong class="mr-1">Borrowed Date:</strong>
+        <%= bo.borrowed_date.strftime('%v') %>
+      </li>
+
+      <li class="list-group-item">
+        <strong class="mr-1">Return  Date:</strong>
+        <%= bo.return_date.strftime('%v') %>
+      </li>
+
+      <li class="list-group-item">
+        <strong class="mr-1">Is the book Approved :</strong> <%= bo.is_approved ? "yes" : "no" %>
+      </li>
+    </ul>
+    <%= link_to 'Edit Request', edit_book_borrow_path(@book, bo), :class=>"btn btn-outline-primary mb-3" %><br>
+  <% end %>
+<% end %>

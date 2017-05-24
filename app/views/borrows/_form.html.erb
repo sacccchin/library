@@ -1,0 +1,53 @@
+<div class="row">
+	<div class="col">
+		<%= form_for([@book, @borrow]) do |bo| %>
+
+			<h3>Book Name: <%= @book.title %></h3>
+
+			<div class="form-group">
+				<%= bo.label :resident %>
+				<%= bo.text_field :resident, :class=> "form-control" %>
+			</div>
+			<div class="form-group">
+				<%= bo.label :borrowed_date %>
+				<%= bo.text_field :borrowed_date, :value => (bo.object.borrowed_date.strftime("%m/%d/%Y") rescue nil ), :class=> "form-control" %>
+			</div>
+			<div class="form-group">
+				<%= bo.label :return_date %>
+				<%= bo.text_field :return_date, :value => (bo.object.return_date.strftime("%m/%d/%Y") rescue nil ), :class=> "form-control" %>
+			</div>
+
+			<div class="form-group">
+				<%= bo.check_box :is_approved %> Approve this book 
+			</div>
+
+			<% if !!bo.object.is_approved %>
+				<div class="form-group">
+					<%= bo.check_box :is_returned %> Return this book
+				</div>
+			<% end %>
+
+			<div class="form-group">
+				<%= bo.submit "Borrow", :class=> "btn btn-primary" %>
+			</div>
+
+		<% end %>
+	</div>
+	<div class="col">
+		<% if @borrow.errors.any? %>
+    		<div class="alert alert-danger" role="alert">
+    			<div id="error_explanation">
+					<h2>
+						<%= pluralize(@borrow.errors.count, "error") %> prohibited
+					this borrow from being saved:
+					</h2>
+					<ul>
+						<% @borrow.errors.full_messages.each do |msg| %>
+							<li><%= msg %></li>
+						<% end %>
+					</ul>
+				</div>
+			</div>
+		<% end %>
+	</div>
+</div>

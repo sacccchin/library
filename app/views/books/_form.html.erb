@@ -1,0 +1,48 @@
+<div class="row">
+	<div class="col">
+    
+		<%= form_for @book do |b| %>
+
+			<div class="form-group">
+				<%= b.label :title %>
+				<%= b.text_field :title, :class=> "form-control" %>
+			</div>
+
+			<div class="form-group">
+				<%= b.label :author_name %>
+				<%= b.text_field :author_name, :class=> "form-control" %> 
+			</div>
+
+			<div class="form-group">
+				<%= b.label :released_date %>
+				<%= b.text_field :released_date, :value => (b.object.released_date.strftime("%m/%d/%Y") rescue nil ), :class=> "form-control" %>
+			</div>
+
+			<div class="form-group">
+				<%= b.label :category %>
+				<%= b.text_field :category, :class=> "form-control" %> 
+			</div>
+
+		  	<div class="form-group">
+		   		<%= b.submit :class=> "btn btn-primary" %>
+		  	</div>
+		<% end %>
+    </div>
+
+    <div class="col">
+    	<% if @book.errors.any? %>
+    		<div class="alert alert-danger" role="alert">
+				<div id="error_explanation">
+					<strong>
+						<%= pluralize(@book.errors.count, "error") %> prohibited this book from being saved:
+					</strong>
+					<ul>
+						<% @book.errors.full_messages.each do |msg| %>
+							<li><%= msg %></li>
+						<% end %>
+					</ul>
+				</div>
+			</div>
+		<% end %>
+    </div>
+</div>

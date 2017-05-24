@@ -1,0 +1,37 @@
+<div class="row">
+	<div class="col">
+		<h2>Book Details</h2>
+		<ul class="list-group mb-3">
+			<li class="list-group-item">
+			  	
+				<strong class="mr-1">Title: </strong>
+				<%= @book.title %>
+			  	
+			</li>
+			<li class="list-group-item">
+				
+				<strong class="mr-1">Author Name:</strong>
+				<%= @book.author_name %>
+				
+			</li>
+			<li class="list-group-item">
+				
+				<strong class="mr-1">Released Date:</strong>
+				<%= @book.released_date.strftime('%v') %>
+				
+			</li>
+			<li class="list-group-item">
+				
+				<strong class="mr-1">Category:</strong>
+				<%= @book.category %>
+				
+			</li>
+		</ul>
+	</div>
+	<div class="col">
+		<%= render "borrows/list" %>
+	</div>
+</div>
+<%= link_to 'Edit', edit_book_path(@book), :class=>"btn btn-outline-primary" %>
+<%= link_to 'Request Book', new_book_borrow_path(@book), :class=>"btn btn-outline-info" %>
+<%= link_to 'Back', books_path,  :class=>"btn btn-outline-primary" %>

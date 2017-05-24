@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  resident: MyString
+  borrowed_date: 2017-05-20 22:08:30
+  return_date: 2017-05-20 22:08:30
+  is_approved: false
+  is_returned: false
+  book: one
+
+two:
+  resident: MyString
+  borrowed_date: 2017-05-20 22:08:30
+  return_date: 2017-05-20 22:08:30
+  is_approved: false
+  is_returned: false
+  book: two
